@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 30 16:06:09 2020
+
+@author: nathi
+"""
+come_out=True
+from random import randint
+
+fichas=100
+
+while come_out:
+    tipo=str(input('Qual o tipo de aposta?  '))
+    if tipo=='Pass Line Bet':
+        a = randint (1,6)
+        b = randint (1,6)
+        c=a+b
+        bet=int(input('Qual o valor da aposta?  '))
+        fichas-=bet
+        print ('Seu saldo atual é:', + fichas)
+        print ('A soma dos dados é:', + c)
+        if c==7 or c==11:
+            fichas+=2*bet
+            print ('Seu saldo atual é:', + fichas)
+        elif c==2 or c==3 or c==12:
+            print ('Seu saldo atual é:', + fichas)
+            if fichas==0:
+                come_out=False
+        else:
+            point=True
+            x = randint (1,6)
+            y = randint (1,6)
+            z=x+y
+            while point:
+                tipo=str(input('Qual o tipo de aposta?  '))
+                print ('A soma dos dados é:', + z)
+                if tipo=='Pass Line Bet':
+                    if z==c:
+                        fichas+=2*bet
+                        print ('Seu saldo atual é:', + fichas)
+                        point=False
+                    elif z==7:
+                        print ('Seu saldo atual é:', + fichas)
+                        point=False
+                        if fichas==0:
+                            come_out=False
+                    else:
+                        while z!=7 and z!=c:
+                            x = randint (1,6)
+                            y = randint (1,6)
+                            z=x+y
+                            print ('A soma dos dados atualizada é:', + z)
+                            if z==c:
+                                fichas+=2*bet
+                                print ('Seu saldo atual é:', + fichas)
+                                point=False
+                            elif z==7:
+                                print ('Seu saldo atual é:', + fichas)
+                                point=False
+                                if fichas==0:
+                                    come_out=False
+                elif tipo=='Field':
+                    a = randint (1,6)
+                    b = randint (1,6)
+                    c=a+b
+                    bet=int(input('Qual o valor da aposta?  '))
+                    fichas-=bet
+                    print ('Seu saldo atual é:', + fichas)
+                    print ('A soma dos dados é:', + c)
+                    if c==3 or c==4 or c==9 or c==10 or c==11:
+                        fichas+=2*bet
+                        print ('Seu saldo atual é:', + fichas)
+                    elif c==5 or c==6 or c==7 or c==8:
+                        print ('Seu saldo atual é:', + fichas)
+                        if fichas==0:
+                            come_out=False
+                    elif c==2:
+                        fichas+=3*bet
+                        print ('Seu saldo atual é:', + fichas)
+                    else:
+                        fichas+=4*bet
+                        print ('Seu saldo atual é:', + fichas)
+                elif tipo=='Any Craps':
+                    a = randint (1,6)
+                    b = randint (1,6)
+                    c=a+b
+                    bet=int(input('Qual o valor da aposta?  '))
+                    fichas-=bet
+                    print ('Seu saldo atual é:', + fichas)
+                    print ('A soma dos dados é:', + c)
+                    if c==2 or c==3 or c==12:
+                        fichas+=8*bet
+                        print ('Seu saldo atual é:', + fichas)                                 
+                    else:
+                        print ('Seu saldo atual é:', + fichas)
+                        if fichas==0:
+                            come_out=False
+                elif tipo=='Twelve':
+                    a = randint (1,6)
+                    b = randint (1,6)
+                    c=a+b
+                    bet=int(input('Qual o valor da aposta?  '))
+                    fichas-=bet
+                    print ('Seu saldo atual é:', + fichas)
+                    print ('A soma dos dados é:', + c)
+                    if c==12:
+                        fichas+=31*bet
+                        print ('Seu saldo atual é:', + fichas)                                 
+                    else:
+                        print ('Seu saldo atual é:', + fichas)
+                        if fichas==0:
+                            come_out=False
+                elif tipo=='Sair do jogo':
+                    print ('Seu saldo final é:', + fichas)
+                    come_out=False
+                    
+    elif tipo=='Field':
+        a = randint (1,6)
+        b = randint (1,6)
+        c=a+b
+        bet=int(input('Qual o valor da aposta?  '))
+        fichas-=bet
+        print ('Seu saldo atual é:', + fichas)
+        print ('A soma dos dados é:', + c)
+        if c==3 or c==4 or c==9 or c==10 or c==11:
+            fichas+=2*bet
+            print ('Seu saldo atual é:', + fichas)
+        elif c==5 or c==6 or c==7 or c==8:
+            print ('Seu saldo atual é:', + fichas)
+            if fichas==0:
+                come_out=False
+        elif c==2:
+            fichas+=3*bet
+            print ('Seu saldo atual é:', + fichas)
+        else:
+            fichas+=4*bet
+            print ('Seu saldo atual é:', + fichas)
+            
+    elif tipo=='Any Craps':
+        a = randint (1,6)
+        b = randint (1,6)
+        c=a+b
+        bet=int(input('Qual o valor da aposta?  '))
+        fichas-=bet
+        print ('Seu saldo atual é:', + fichas)
+        print ('A soma dos dados é:', + c)
+        if c==2 or c==3 or c==12:
+            fichas+=8*bet
+            print ('Seu saldo atual é:', + fichas)                                 
+        else:
+            print ('Seu saldo atual é:', + fichas)
+            if fichas==0:
+                come_out=False
+    
+    elif tipo=='Twelve':
+        a = randint (1,6)
+        b = randint (1,6)
+        c=a+b
+        bet=int(input('Qual o valor da aposta?  '))
+        fichas-=bet
+        print ('Seu saldo atual é:', + fichas)
+        print ('A soma dos dados é:', + c)
+        if c==12:
+            fichas+=31*bet
+            print ('Seu saldo atual é:', + fichas)                                 
+        else:
+            print ('Seu saldo atual é:', + fichas)
+            if fichas==0:
+                come_out=False
+    
+    elif tipo=='Sair do jogo':
+                    print ('Seu saldo final é:', + fichas)
+                    come_out=False
